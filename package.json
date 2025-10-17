@@ -1,5 +1,5 @@
 {
-  "homepage": "https://Akhtar7890.github.io/Portfolio",
+  "homepage": "https://Akhtar7890.github.io/portfolio",
   "name": "portfolio",
   "private": true,
   "version": "0.0.0",
@@ -7,10 +7,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "deploy": "gh-pages -d dist"
   },
   
   "dependencies": {

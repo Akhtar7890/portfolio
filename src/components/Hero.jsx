@@ -52,10 +52,6 @@ const Button = styled.a`
   }
 `;
 
-const myName = styled.h1`
-  color: "red";
-`;
-
 function Hero() {
   return (
     <HeroContainer>
