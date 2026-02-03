@@ -1,80 +1,108 @@
 import React from "react";
 import styled from "styled-components";
 
-const ContactContainer = styled.section`
-  padding: 50px 20px;
+const ContactSection = styled.section`
+  padding: 70px 20px; /* same vertical padding as other sections */
+  background-color: #f9fafb;
+  display: flex;
+  justify-content: center;
+`;
+
+const Container = styled.div`
+  max-width: 1100px; /* same as other sections */
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 30px;
   background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   text-align: center;
-  margin: 10px 10px;
-  max-width: 100wh;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    padding: 30px 20px;
+  }
 `;
 
 const Title = styled.h2`
-  font-size: 2rem;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
   margin-bottom: 30px;
-  color: #333;
+  color: #1f2933;
+  letter-spacing: 0.3px;
 `;
 
 const ContactInfo = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 `;
 
 const ContactLink = styled.a`
-  color: #007bff;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 12px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  color: #0d6efd;
+  background-color: #f0f4ff;
+  border-radius: 8px;
   text-decoration: none;
-  margin: 0 15px;
-  font-size: 1.2rem;
-  transition: color 0.2s ease-in-out;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
 
   &:hover {
-    color: #0056b3;
+    background-color: #0d6efd;
+    color: #fff;
+    transform: translateY(-2px);
   }
 `;
 
 const Icon = styled.i`
-  margin-right: 5px;
+  font-size: 1.1rem;
 `;
 
-function Contact() {
+export default function Contact() {
   return (
-    <ContactContainer id="contact">
-      <Title>Contact Me</Title>
-      <ContactInfo>
-        <ContactLink href="mailto:akhtarbabu7459941478.email@example.com">
-          <Icon className="far fa-envelope"></Icon>
-          akhtarbabu7459941478@gmail.com
-        </ContactLink>
-      </ContactInfo>
-      <div>
-        <ContactLink
-          href="https://www.linkedin.com/in/akhtarbabu/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon className="fab fa-linkedin"></Icon>
-          LinkedIn
-        </ContactLink>
-        <ContactLink
-          href="https://github.com/Akhtar7890"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon className="fab fa-github"></Icon>
-          GitHub
-        </ContactLink>
-        <ContactLink
-          href="https://leetcode.com/akhtarbabu_11"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon className="fas fa-code"></Icon>
-          LeetCode
-        </ContactLink>
-        {/* Add more profile links as needed */}
-      </div>
-    </ContactContainer>
+    <ContactSection id="contact">
+      <Container>
+        <Title>Contact Me</Title>
+
+        <ContactInfo>
+          <ContactLink href="mailto:akhtarbabu7459941478.email@example.com">
+            <Icon className="far fa-envelope" />
+            akhtarbabu7459941478@gmail.com
+          </ContactLink>
+        </ContactInfo>
+
+        <div>
+          <ContactLink
+            href="https://www.linkedin.com/in/akhtarbabu/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon className="fab fa-linkedin" />
+            LinkedIn
+          </ContactLink>
+
+          <ContactLink
+            href="https://github.com/Akhtar7890"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon className="fab fa-github" />
+            GitHub
+          </ContactLink>
+
+          <ContactLink
+            href="https://leetcode.com/akhtarbabu_11"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon className="fas fa-code" />
+            LeetCode
+          </ContactLink>
+        </div>
+      </Container>
+    </ContactSection>
   );
 }
-
-export default Contact;

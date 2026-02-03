@@ -7,12 +7,12 @@ import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import SectionDivider from "./assets/js/SectionDivider.js";
 
 const AppContainer = styled.div`
   font-family: sans-serif;
   width: 100%;
   margin: 0 auto;
-  // Add more global styles here if needed
 `;
 
 function App() {
@@ -20,9 +20,13 @@ function App() {
     <AppContainer>
       <Header />
       <Hero />
+      <SectionDivider />
       <About />
+      <SectionDivider />
       <Skills />
+      <SectionDivider />
       <Projects />
+      <SectionDivider />
       <Contact />
       <Footer />
     </AppContainer>
