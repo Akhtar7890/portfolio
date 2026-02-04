@@ -18,30 +18,44 @@ const Container = styled.div`
 const Title = styled.h2`
   text-align: center;
   font-size: 28px;
-  font-weight: 600;
-  margin-bottom: 30px;
-  color: #1f2933;
-  letter-spacing: 0.3px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #0f172a; /* Deep charcoal */
+  letter-spacing: -0.5px;
 `;
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(
+    2,
+    1fr
+  ); /* Exactly 2 cards per row on desktop */
   gap: 30px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; /* 1 card per row on mobile */
+  }
 `;
 
 const CategoryCard = styled.div`
   background: #f8fafc;
-  padding: 25px;
-  border-radius: 10px;
-  border: 1px solid #e5e7eb;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: #0f172a;
+  }
 `;
 
 const CategoryTitle = styled.h3`
   font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 15px;
-  color: #111827;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 `;
 
 const SkillsList = styled.ul`
@@ -49,84 +63,91 @@ const SkillsList = styled.ul`
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
 `;
 
 const Skill = styled.li`
-  background-color: #2563eb; /* Blue */
-  color: #ffffff;
-  padding: 8px 16px;
-  border-radius: 999px;
+  color: #1e293b;
+  background: #ffffff;
+  padding: 8px 18px;
+  border-radius: 8px;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
+  border: 1px solid #e2e8f0;
   cursor: default;
 
-  /* Default visible style */
-  box-shadow: 0 8px 16px rgba(37, 99, 235, 0.35);
-
-  /* Floating animation */
+  /* Your requested floating animation */
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
   animation: float 3s ease-in-out infinite;
+  /* Fixed: This now uses the --i variable passed from the map */
   animation-delay: calc(var(--i) * 0.15s);
 
-  transition:
-    background-color 0.25s ease,
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+  transition: all 0.3s ease;
 
   @keyframes float {
-    0% {
+    0%,
+    100% {
       transform: translateY(0);
     }
     50% {
       transform: translateY(-6px);
     }
-    100% {
-      transform: translateY(0);
-    }
   }
 
   &:hover {
-    // background-color: #dc2626; /* Red on hover */
     transform: scale(1.08);
-    cursor: default;
-    box-shadow: 0 10px 20px rgba(220, 38, 38, 0.35);
-    animation-play-state: paused; /* Stops floating on hover */
+    background-color: #0f172a;
+    color: #ffffff;
+    box-shadow: 0 10px 20px rgba(220, 38, 38, 0.25); /* Your red shadow on hover */
+    animation-play-state: paused;
   }
 `;
 
 function Skills() {
   const skillCategories = {
-    Frontend: ["React", "Bootstrap", "JavaScript (ES6+)", "HTML5", "CSS3"],
-    Backend: [
+    "Backend & Frameworks": [
       "Java",
       "Spring Boot",
-      "REST APIs",
-      "Thymeleaf",
-      "Hibernate (JPA)",
+      "Spring MVC",
+      "Spring Security",
+      "Spring Data JPA",
+      "Hibernate",
     ],
-    Database: ["MySQL", "JDBC"],
-    "Tools & Platforms": [
-      "Git",
-      "GitHub",
-      "Linux",
-      "Postman",
-      "IntelliJ IDEA",
-      "VS Code",
+    "Frontend & UI": [
+      "React",
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "Bootstrap",
+      "Thymeleaf",
+    ],
+    "Databases & Tools": ["MySQL", "JDBC", "REST APIs", "Git", "Postman"],
+    "Core CS Concepts": [
+      "Data Structures",
+      "Algorithms",
+      "OOP",
+      "OS",
+      "SDLC",
+      "Agile",
     ],
   };
 
   return (
     <SkillsSection id="skills">
       <Container>
-        <Title>Technical Skills</Title>
-
+        <Title>Technical Expertise</Title>
         <Grid>
           {Object.entries(skillCategories).map(([category, skills]) => (
             <CategoryCard key={category}>
               <CategoryTitle>{category}</CategoryTitle>
               <SkillsList>
-                {skills.map((skill) => (
-                  <Skill key={skill}>{skill}</Skill>
+                {skills.map((skill, index) => (
+                  <Skill
+                    key={skill}
+                    style={{ "--i": index }} // This is the crucial fix for animation
+                  >
+                    {skill}
+                  </Skill>
                 ))}
               </SkillsList>
             </CategoryCard>
