@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const ProjectsSection = styled.section`
-  padding: 70px 20px;
+  padding: 60px 20px;
   background-color: #f9fafb;
 `;
 
@@ -18,170 +18,164 @@ const Container = styled.div`
 const Title = styled.h2`
   text-align: center;
   font-size: 28px;
-  font-weight: 600;
-  margin-bottom: 30px;
-  color: #1f2933;
-  letter-spacing: 0.3px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #0f172a; /* Deep charcoal */
+  letter-spacing: -0.5px;
 `;
 
 const ProjectsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  /* Explicit row and column gaps to prevent any overlapping */
+  column-gap: 30px;
+  row-gap: 50px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    row-gap: 30px;
+  }
 `;
 
 const ProjectCard = styled.div`
-  background-color: #f8fafc;
-  border-radius: 14px;
-  padding: 24px;
-  border: 1px solid #e5e7eb;
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+
+  /* Flexbox settings to keep everything contained */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  height: auto;
+  position: relative; /* Prevents z-index issues during overlap */
 
   &:hover {
     transform: translateY(-8px);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+    border-color: #0f172a;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
   }
 `;
 
 const ProjectTitle = styled.h3`
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 10px;
-  color: #111827;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #0f172a;
+`;
+
+const TechStack = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+`;
+
+const TechTag = styled.span`
+  background-color: #f8fafc;
+  color: #64748b;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  border: 1px solid #e2e8f0;
+  text-transform: uppercase;
 `;
 
 const ProjectDescription = styled.p`
   font-size: 14px;
-  color: #4b5563;
+  color: #475569;
   line-height: 1.6;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  /* This ensures the card fills space correctly without pushing the button out of view */
+  flex-grow: 1;
 `;
 
 const ProjectLink = styled.a`
-  align-self: flex-start;
-  padding: 8px 18px;
-  background-color: #2563eb;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 500;
-  border-radius: 999px;
-  text-decoration: none;
-  transition:
-    background-color 0.25s ease,
-    transform 0.25s ease;
-
-  &:hover {
-    background-color: green; /* Matches skill hover #dc2626*/
-    transform: translateY(-2px);
-    color: #ffffff;
-  }
-`;
-
-const TechStack = styled.ul`
-  list-style: none;
-  padding: 0;
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
-`;
-
-const Tech = styled.li`
-  background-color: #eef2ff; /* Light blue background */
-  color: #1e40af; /* Dark blue text */
-  padding: 5px 12px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 500;
-  border: 1px solid #c7d2fe;
-
+  align-items: center;
+  justify-content: center; /* Centers text inside the button */
+  width: 100%; /* Makes button fill the card width */
+  box-sizing: border-box; /* Ensures padding doesn't cause overflow */
+  padding: 12px 0;
+  background-color: #0f172a;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
   transition: all 0.2s ease;
+  text-align: center;
 
   &:hover {
-    // background-color: #2563eb;
-    // color: #ffffff;
-    transform: scale(1.05);
-    cursor: default;
+    background-color: #334155;
   }
 `;
 
 function Projects() {
   const projects = [
     {
-      title: "Notepad Editor",
-      description:
-        "Desktop-based Notepad Editor built using Java Swing, supporting core file operations such as create, open, edit, and save.",
-      tech: ["Java", "Swing", "I/O Streams"],
-      link: "https://github.com/Akhtar7890/Notepad-Editor",
-    },
-    {
       title: "Smart Contact Manager",
       description:
-        "Secure contact management system using Spring Boot and Spring Security with full CRUD functionality.",
-      tech: [
-        "Java",
-        "Spring Boot",
-        "Hibernate",
-        "Bootstrap",
-        "Thymeleaf",
-        "MySQL",
-      ],
+        "Developed a Spring Boot MVC-based contact management system with authentication handling 100+ contacts. Integrated MySQL for real-time search and CRUD operations.",
+      tech: ["Spring Boot", "MySQL", "REST API", "Thymeleaf"],
       link: "https://github.com/Akhtar7890/Contact-Management-System",
-    },
-    {
-      title: "Personal Portfolio Website",
-      description:
-        "Personal portfolio website built with React to showcase projects, skills, and experience.",
-      tech: ["React", "Styled Components"],
-      link: "https://akhtar7890.github.io/portfolio/",
-    },
-    {
-      title: "React Todo Application",
-      description:
-        "A React-based task management application allowing users to manage daily tasks efficiently.",
-      tech: ["React", "JavaScript", "CSS"],
-      link: "https://github.com/Akhtar7890/Todo-App",
     },
     {
       title: "Library Management System",
       description:
-        "Library management system built with Spring Boot, MySQL, and Bootstrap for efficient data handling.",
-      tech: ["Spring Boot", "MySQL", "Bootstrap"],
+        "Built a system managing 500+ books. Implemented librarian and member authentication using Spring Security with RESTful services.",
+      tech: ["Spring Boot", "Spring Security", "MySQL", "JPA"],
       link: "https://github.com/Akhtar7890/Library-Management",
+    },
+    {
+      title: "Notepad Editor",
+      description:
+        "Created a desktop text editor using Java Swing supporting file lifecycle operations. Implemented Java I/O streams for reliable processing.",
+      tech: ["Java", "Swing", "I/O Streams"],
+      link: "https://github.com/Akhtar7890/Notepad-Editor",
+    },
+    {
+      title: "Personal Portfolio",
+      description:
+        "Responsive React application built with styled-components to showcase technical projects and experience.",
+      tech: ["React", "JavaScript", "Styled Components"],
+      link: "https://akhtar7890.github.io/portfolio/",
+    },
+    {
+      title: "React Todo App",
+      description:
+        "Task management tool focused on efficient state handling and clean user interaction patterns.",
+      tech: ["React", "JavaScript", "CSS3"],
+      link: "https://github.com/Akhtar7890/Todo-App",
     },
   ];
 
   return (
     <ProjectsSection id="projects">
       <Container>
-        <Title>Projects</Title>
-
+        <Title>Technical Projects</Title>
         <ProjectsGrid>
-          {projects.map((project) => (
-            <ProjectCard key={project.title}>
-              <div>
-                <ProjectTitle>{project.title}</ProjectTitle>
-                <ProjectDescription>{project.description}</ProjectDescription>
-
-                {/* ✅ Tech Stack */}
-                <TechStack>
-                  {project.tech.map((item) => (
-                    <Tech key={item}>{item}</Tech>
-                  ))}
-                </TechStack>
-              </div>
-
+          {projects.map((project, index) => (
+            <ProjectCard key={index}>
+              <ProjectTitle>{project.title}</ProjectTitle>
+              <TechStack>
+                {project.tech.map((tag, i) => (
+                  <TechTag key={i}>{tag}</TechTag>
+                ))}
+              </TechStack>
+              <ProjectDescription>{project.description}</ProjectDescription>
               <ProjectLink
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                View Project
+                View Source Code
               </ProjectLink>
             </ProjectCard>
           ))}

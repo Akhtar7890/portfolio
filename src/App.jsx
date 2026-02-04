@@ -20,13 +20,13 @@ function App() {
     <AppContainer>
       <Header />
       <Hero />
-      <SectionDivider />
+      {/* <SectionDivider /> */}
       <About />
-      <SectionDivider />
+      {/* <SectionDivider /> */}
       <Skills />
-      <SectionDivider />
+      {/* <SectionDivider /> */}
       <Projects />
-      <SectionDivider />
+      {/* <SectionDivider /> */}
       <Contact />
       <Footer />
     </AppContainer>
